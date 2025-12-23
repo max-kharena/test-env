@@ -4,7 +4,6 @@ import { DataTable } from "@/components/data-table"
 import { getSelectColumn } from "@/components/data-table-columns"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
 	Select,
@@ -76,8 +75,8 @@ function vendorsToText(vendors: AlertRuleRow["Vendors"]) {
 
 export default function AlertsTable() {
 	const [view, setView] = React.useState<View>("rules")
-	const [statusFilter, setStatusFilter] = React.useState<StatusFilter>("all")
-	const [query, setQuery] = React.useState("")
+	const [statusFilter] = React.useState<StatusFilter>("all")
+	const [query] = React.useState("")
 
 	const rules = React.useMemo(() => {
 		const rows = alertRulesData as AlertRuleRowBase[]

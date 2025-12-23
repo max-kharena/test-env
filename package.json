@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "predeploy": "pnpm build && cp dist/index.html dist/404.html && touch dist/.nojekyll",
+    "deploy": "gh-pages -d dist --dotfiles",
     "prepare": "husky"
   },
   "dependencies": {

@@ -5,6 +5,9 @@ import tailwindcss from "@tailwindcss/vite"
 
 // https://vite.dev/config/
 export default defineConfig({
+  // IMPORTANT: If your GitHub repo name is different, change this to `/<repo>/`.
+  // Example: https://<user>.github.io/<repo>/
+  base: "/test-env/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
