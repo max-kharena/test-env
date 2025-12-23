@@ -1,0 +1,82 @@
+[
+  {
+    "id": "stripe-stripe-msa-2023",
+    "contract": "Stripe MSA - 2023",
+    "vendor": "Stripe",
+    "type": "MSA",
+    "activeFrom": "2023-01-15",
+    "activeUntil": "2025-01-15",
+    "renewal": "2025-01-01",
+    "status": "Active"
+  },
+  {
+    "id": "stripe-stripe-fee-addendum",
+    "contract": "Stripe Fee Addendum",
+    "vendor": "Stripe",
+    "type": "Addendum",
+    "activeFrom": "2023-06-01",
+    "activeUntil": "2025-01-15",
+    "renewal": null,
+    "status": "Active"
+  },
+  {
+    "id": "stripe-stripe-pricing-schedule-q4",
+    "contract": "Stripe Pricing Schedule Q4",
+    "vendor": "Stripe",
+    "type": "Pricing Schedule",
+    "activeFrom": "2024-10-01",
+    "activeUntil": "2025-01-15",
+    "renewal": null,
+    "status": "Active"
+  },
+  {
+    "id": "adyen-adyen-msa",
+    "contract": "Adyen MSA",
+    "vendor": "Adyen",
+    "type": "MSA",
+    "activeFrom": "2022-09-01",
+    "activeUntil": "2024-12-31",
+    "renewal": "2024-12-15",
+    "status": "Expiring Soon"
+  },
+  {
+    "id": "checkout-com-checkout-com-msa",
+    "contract": "Checkout.com MSA",
+    "vendor": "Checkout.com",
+    "type": "MSA",
+    "activeFrom": "2023-03-15",
+    "activeUntil": "2026-03-15",
+    "renewal": "2026-03-01",
+    "status": "Active"
+  },
+  {
+    "id": "checkout-com-checkout-com-sla",
+    "contract": "Checkout.com SLA",
+    "vendor": "Checkout.com",
+    "type": "SLA",
+    "activeFrom": "2023-03-15",
+    "activeUntil": "2026-03-15",
+    "renewal": null,
+    "status": "Active"
+  },
+  {
+    "id": "wise-wise-enterprise-agreement",
+    "contract": "Wise Enterprise Agreement",
+    "vendor": "Wise",
+    "type": "MSA",
+    "activeFrom": "2023-11-01",
+    "activeUntil": "2025-11-01",
+    "renewal": "2025-10-15",
+    "status": "Active"
+  },
+  {
+    "id": "paypal-paypal-msa-expired",
+    "contract": "PayPal MSA (Expired)",
+    "vendor": "PayPal",
+    "type": "MSA",
+    "activeFrom": "2021-01-01",
+    "activeUntil": "2023-01-01",
+    "renewal": null,
+    "status": "Inactive"
+  }
+]

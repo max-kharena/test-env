@@ -1,0 +1,98 @@
+[
+  {
+    "id": "txn-2024-01-15t16-32-45-stripe-payin",
+    "dateTime": "2024-01-15T16:32:45",
+    "vendor": "Stripe",
+    "type": "payin",
+    "amountOriginal": "USD 15,000",
+    "amountUsd": 15000,
+    "feeOriginal": "USD 450.00",
+    "feeUsd": 450.0,
+    "varianceUsd": 15.0,
+    "variancePercent": 3.45
+  },
+  {
+    "id": "txn-2024-01-15t14-18-22-adyen-payin",
+    "dateTime": "2024-01-15T14:18:22",
+    "vendor": "Adyen",
+    "type": "payin",
+    "amountOriginal": "EUR 8,500",
+    "amountUsd": 9180,
+    "feeOriginal": "EUR 255.00",
+    "feeUsd": 275.4,
+    "varianceUsd": 8.16,
+    "variancePercent": 3.05
+  },
+  {
+    "id": "txn-2024-01-15t12-45-11-stripe-payout",
+    "dateTime": "2024-01-15T12:45:11",
+    "vendor": "Stripe",
+    "type": "payout",
+    "amountOriginal": "USD 22,000",
+    "amountUsd": 22000,
+    "feeOriginal": "USD 660.00",
+    "feeUsd": 660.0,
+    "varianceUsd": 22.0,
+    "variancePercent": 3.45
+  },
+  {
+    "id": "txn-2024-01-14t20-22-33-checkout-com-payin",
+    "dateTime": "2024-01-14T20:22:33",
+    "vendor": "Checkout.com",
+    "type": "payin",
+    "amountOriginal": "GBP 5,200",
+    "amountUsd": 6630,
+    "feeOriginal": "GBP 130.00",
+    "feeUsd": 165.75,
+    "varianceUsd": null,
+    "variancePercent": null
+  },
+  {
+    "id": "txn-2024-01-14t18-55-08-wise-fx",
+    "dateTime": "2024-01-14T18:55:08",
+    "vendor": "Wise",
+    "type": "fx",
+    "amountOriginal": "USD 12,500",
+    "amountUsd": 12500,
+    "feeOriginal": "USD 87.50",
+    "feeUsd": 87.5,
+    "varianceUsd": null,
+    "variancePercent": null
+  },
+  {
+    "id": "txn-2024-01-14t16-12-55-stripe-payin",
+    "dateTime": "2024-01-14T16:12:55",
+    "vendor": "Stripe",
+    "type": "payin",
+    "amountOriginal": "EUR 3,800",
+    "amountUsd": 4104,
+    "feeOriginal": "EUR 114.00",
+    "feeUsd": 123.12,
+    "varianceUsd": 4.1,
+    "variancePercent": 3.45
+  },
+  {
+    "id": "txn-2024-01-14t13-30-22-adyen-payout",
+    "dateTime": "2024-01-14T13:30:22",
+    "vendor": "Adyen",
+    "type": "payout",
+    "amountOriginal": "USD 45,000",
+    "amountUsd": 45000,
+    "feeOriginal": "USD 1350.00",
+    "feeUsd": 1350.0,
+    "varianceUsd": 45.0,
+    "variancePercent": 3.45
+  },
+  {
+    "id": "txn-2024-01-13t19-45-44-checkout-com-transfer",
+    "dateTime": "2024-01-13T19:45:44",
+    "vendor": "Checkout.com",
+    "type": "transfer",
+    "amountOriginal": "USD 7,800",
+    "amountUsd": 7800,
+    "feeOriginal": "USD 195.00",
+    "feeUsd": 195.0,
+    "varianceUsd": null,
+    "variancePercent": null
+  }
+]

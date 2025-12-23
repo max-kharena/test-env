@@ -1,0 +1,38 @@
+[
+  {
+    "Alert Title": "FX Markup Variance Detected",
+    "Description": "Stripe applied 2.1% markup instead of contracted 1.5%",
+    "Vendor": "Stripe",
+    "Triggered": "2 hours ago",
+    "Status": "Open",
+    "Severity": "High",
+    "Category": "Fee Variance"
+  },
+  {
+    "Alert Title": "SLA Response Time Warning",
+    "Description": "Average API latency exceeded 200ms threshold",
+    "Vendor": "Adyen",
+    "Triggered": "5 hours ago",
+    "Status": "Open",
+    "Severity": "Medium",
+    "Category": "SLA"
+  },
+  {
+    "Alert Title": "Contract Expiring Soon",
+    "Description": "MSA with Checkout.com expires in 30 days",
+    "Vendor": "Checkout.com",
+    "Triggered": "1 day ago",
+    "Status": "Open",
+    "Severity": "High",
+    "Category": "Contract"
+  },
+  {
+    "Alert Title": "Fee Variance Resolved",
+    "Description": "Wise fee discrepancy has been corrected",
+    "Vendor": "Wise",
+    "Triggered": "2 days ago",
+    "Status": "Resolved",
+    "Severity": "Low",
+    "Category": "Fee Variance"
+  }
+]

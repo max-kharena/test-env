@@ -1,0 +1,80 @@
+[
+  {
+    "id": "stripe",
+    "vendor": "Stripe",
+    "category": "Cards",
+    "status": "Active",
+    "accounts": 2,
+    "volumeMtd": 2450000,
+    "feeMtd": 71050,
+    "feeLeakage": 1250,
+    "slaBreaches": 0,
+    "alerts": 2,
+    "score": 94
+  },
+  {
+    "id": "adyen",
+    "vendor": "Adyen",
+    "category": "On-ramp",
+    "status": "Active",
+    "accounts": 1,
+    "volumeMtd": 1850000,
+    "feeMtd": 46250,
+    "feeLeakage": 890,
+    "slaBreaches": 1,
+    "alerts": 3,
+    "score": 87
+  },
+  {
+    "id": "checkout-com",
+    "vendor": "Checkout.com",
+    "category": "Cards",
+    "status": "Active",
+    "accounts": 3,
+    "volumeMtd": 890000,
+    "feeMtd": 22250,
+    "feeLeakage": 340,
+    "slaBreaches": 0,
+    "alerts": null,
+    "score": 98
+  },
+  {
+    "id": "wise",
+    "vendor": "Wise",
+    "category": "Off-ramp",
+    "status": "Paused",
+    "accounts": 1,
+    "volumeMtd": 420000,
+    "feeMtd": 4200,
+    "feeLeakage": null,
+    "slaBreaches": 0,
+    "alerts": null,
+    "score": 92
+  },
+  {
+    "id": "paypal",
+    "vendor": "PayPal",
+    "category": "On-ramp",
+    "status": "Archived",
+    "accounts": 0,
+    "volumeMtd": 0,
+    "feeMtd": 0,
+    "feeLeakage": null,
+    "slaBreaches": 2,
+    "alerts": null,
+    "score": 65
+  },
+  {
+    "id": "circle",
+    "vendor": "Circle",
+    "category": "Custody",
+    "status": "Active",
+    "accounts": 1,
+    "volumeMtd": 5200000,
+    "feeMtd": 26000,
+    "feeLeakage": 520,
+    "slaBreaches": 0,
+    "alerts": 1,
+    "score": 96
+  }
+]

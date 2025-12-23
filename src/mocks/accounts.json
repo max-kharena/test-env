@@ -1,0 +1,93 @@
+[
+  {
+    "id": "acct_1234567890",
+    "accountName": "Stripe Production US",
+    "accountId": "acct_1234567890",
+    "vendor": "Stripe",
+    "environment": "production",
+    "currency": "USD",
+    "balance": 125430.5,
+    "pendingAmount": 8920,
+    "transactions": 15420,
+    "successRate": 99.2,
+    "status": "Active"
+  },
+  {
+    "id": "acct_0987654321",
+    "accountName": "Stripe Production EU",
+    "accountId": "acct_0987654321",
+    "vendor": "Stripe",
+    "environment": "production",
+    "currency": "EUR",
+    "balance": 89200.0,
+    "pendingAmount": 5430,
+    "transactions": 8750,
+    "successRate": 98.8,
+    "status": "Active"
+  },
+  {
+    "id": "ADY-123456",
+    "accountName": "Adyen Main Account",
+    "accountId": "ADY-123456",
+    "vendor": "Adyen",
+    "environment": "production",
+    "currency": "USD",
+    "balance": 67890.25,
+    "pendingAmount": 12340,
+    "transactions": 6230,
+    "successRate": 99.5,
+    "status": "Active"
+  },
+  {
+    "id": "CKO-789012",
+    "accountName": "Checkout.com Primary",
+    "accountId": "CKO-789012",
+    "vendor": "Checkout.com",
+    "environment": "production",
+    "currency": "GBP",
+    "balance": 45670.8,
+    "pendingAmount": 3210,
+    "transactions": 4120,
+    "successRate": 99.1,
+    "status": "Active"
+  },
+  {
+    "id": "WISE-456789",
+    "accountName": "Wise Business",
+    "accountId": "WISE-456789",
+    "vendor": "Wise",
+    "environment": "production",
+    "currency": "USD",
+    "balance": 34560.0,
+    "pendingAmount": 890,
+    "transactions": 2340,
+    "successRate": 99.8,
+    "status": "Active"
+  },
+  {
+    "id": "acct_test_123",
+    "accountName": "Stripe Sandbox",
+    "accountId": "acct_test_123",
+    "vendor": "Stripe",
+    "environment": "sandbox",
+    "currency": "USD",
+    "balance": 0.0,
+    "pendingAmount": null,
+    "transactions": 156,
+    "successRate": 100.0,
+    "status": "Active"
+  },
+  {
+    "id": "PP-LEGACY-001",
+    "accountName": "PayPal Legacy",
+    "accountId": "PP-LEGACY-001",
+    "vendor": "PayPal",
+    "environment": "production",
+    "currency": "USD",
+    "balance": 0.0,
+    "pendingAmount": null,
+    "transactions": 0,
+    "successRate": null,
+    "status": "Inactive"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "Alert Name": "Fee Variance Alert",
+    "Status": "Active",
+    "Vendors": "All Vendors",
+    "Condition": "Fee variance exceeds 5%",
+    "Channels": ["Email", "Slack", "In-App"]
+  },
+  {
+    "Alert Name": "FX Markup Warning",
+    "Status": "Active",
+    "Vendors": ["Stripe", "Adyen"],
+    "Condition": "FX markup exceeds 1.5%",
+    "Channels": ["Email", "In-App"]
+  },
+  {
+    "Alert Name": "SLA Breach Alert",
+    "Status": "Active",
+    "Vendors": "All Vendors",
+    "Condition": "API latency exceeds 200ms",
+    "Channels": ["Slack", "In-App"]
+  },
+  {
+    "Alert Name": "Contract Expiry Reminder",
+    "Status": "Disabled",
+    "Vendors": "All Vendors",
+    "Condition": "Contract expires within 30 days",
+    "Channels": ["Email"]
+  }
+]
