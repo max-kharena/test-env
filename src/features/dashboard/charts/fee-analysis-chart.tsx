@@ -1,7 +1,7 @@
 "use client"
 
 // Global
-import { useState, useMemo} from "react"
+import { useMemo, useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 // Components
@@ -49,36 +49,55 @@ const chartConfig = {
 function FeeAnalysisChart() {
   const [timeRange, setTimeRange] = useState("90d")
 
-  const formatUSD = useMemo(() => {
-    const formatter = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    })
-
+  const parseYmdToLocalDate = useMemo(() => {
     return (value: unknown) => {
-      if (typeof value !== "number" || Number.isNaN(value)) return String(value)
-      return formatter.format(value)
+      if (typeof value !== "string") return null
+      const [year, month, day] = value.split("-").map((part) => Number(part))
+      if (!year || !month || !day) return null
+      return new Date(year, month - 1, day)
     }
   }, [])
 
-
-  const filteredData = chartData.filter((item) => {
-    const date = new Date(item.date)
-    const referenceDate = new Date("2024-06-30")
-    let daysToSubtract = 90
-    if (timeRange === "30d") {
-      daysToSubtract = 30
-    } else if (timeRange === "7d") {
-      daysToSubtract = 7
+  const formatUSDk = useMemo(() => {
+    return (value: unknown) => {
+      if (typeof value !== "number" || Number.isNaN(value)) return String(value)
+      const k = Math.round(value / 1000)
+      return `$${k}k`
     }
-    const startDate = new Date(referenceDate)
+  }, [])
+
+  const { filteredData, referenceDate } = useMemo(() => {
+    const dates = chartData
+      .map((item) => parseYmdToLocalDate(item.date))
+      .filter((d): d is Date => Boolean(d))
+
+    const maxDate = dates.length
+      ? new Date(Math.max(...dates.map((d) => d.getTime())))
+      : new Date()
+
+    let days = 90
+    if (timeRange === "30d") {
+      days = 30
+    } else if (timeRange === "7d") {
+      days = 7
+    }
+
+    const daysToSubtract = Math.max(0, days - 1)
+
+    const startDate = new Date(maxDate)
     startDate.setDate(startDate.getDate() - daysToSubtract)
-    return date >= startDate
-  })
+
+    return {
+      referenceDate: maxDate,
+      filteredData: chartData.filter((item) => {
+        const date = parseYmdToLocalDate(item.date)
+        return date ? date >= startDate : false
+      }),
+    }
+  }, [parseYmdToLocalDate, timeRange])
 
   return (
-    <Card className="@container/card flex h-full flex-col">
+    <Card className="@container/card flex h-80 w-full flex-col">
       <CardHeader>
         <CardTitle>Fee Analysis</CardTitle>
         <CardDescription>
@@ -119,10 +138,10 @@ function FeeAnalysisChart() {
           </Select>
         </CardAction>
       </CardHeader>
-      <CardContent className="flex flex-1 flex-col px-2 pt-4 sm:px-6 sm:pt-6">
+      <CardContent className="flex min-h-0 flex-1 flex-col px-2 pt-4 sm:px-6 sm:pt-6">
         <ChartContainer
           config={chartConfig}
-          className="aspect-auto h-full w-full"
+          className="aspect-auto h-full w-full [&_.recharts-cartesian-axis-tick_text]:tabular-nums"
         >
           <AreaChart data={filteredData}>
             <defs>
@@ -162,8 +181,9 @@ function FeeAnalysisChart() {
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickCount={3}
-              tickFormatter={(value) => formatUSD(value)}
+              domain={[0, 60000]}
+              ticks={[0, 20000, 40000, 60000]}
+              tickFormatter={(value) => formatUSDk(value)}
             />
             <XAxis
               dataKey="date"
@@ -172,7 +192,7 @@ function FeeAnalysisChart() {
               tickMargin={8}
               minTickGap={32}
               tickFormatter={(value) => {
-                const date = new Date(value)
+                const date = parseYmdToLocalDate(value) ?? new Date(String(value))
                 return date.toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
@@ -184,13 +204,15 @@ function FeeAnalysisChart() {
               content={
                 <ChartTooltipContent
                   labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                    const date = parseYmdToLocalDate(value) ?? referenceDate
+                    return date.toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
+                      year: "numeric",
                     })
                   }}
                   indicator="dot"
-                  valueFormatter={(value) => formatUSD(value)}
+                  valueFormatter={(value) => formatUSDk(value)}
                 />
               }
             />
@@ -199,14 +221,12 @@ function FeeAnalysisChart() {
               type="natural"
               fill="url(#fillEstimated)"
               stroke="var(--color-estimated)"
-              stackId="a"
             />
             <Area
               dataKey="charged"
               type="natural"
               fill="url(#fillCharged)"
               stroke="var(--color-charged)"
-              stackId="a"
             />
           </AreaChart>
         </ChartContainer>

@@ -1,4 +1,4 @@
-export const chartData = [
+const rawChartData = [
     { date: "2024-04-01", charged: 222, estimated: 150 },
     { date: "2024-04-02", charged: 97, estimated: 180 },
     { date: "2024-04-03", charged: 167, estimated: 120 },
@@ -90,4 +90,10 @@ export const chartData = [
     { date: "2024-06-28", charged: 149, estimated: 200 },
     { date: "2024-06-29", charged: 103, estimated: 160 },
     { date: "2024-06-30", charged: 446, estimated: 400 },
-];
+]
+
+export const chartData = rawChartData.map(({ date, charged, estimated }) => {
+    const chargedValue = charged * 100
+    const estimatedValue = Math.min(estimated * 100, Math.max(0, chargedValue - 100))
+    return { date, charged: chargedValue, estimated: estimatedValue }
+})

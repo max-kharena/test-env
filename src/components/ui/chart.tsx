@@ -170,6 +170,16 @@ function ChartTooltipContent({
 
   const nestLabel = payload.length === 1 && indicator !== "dot"
 
+  const sortedPayload = [...payload]
+    .filter((item) => item.type !== "none")
+    .sort((a, b) => {
+      const aValue = typeof a.value === "number" ? a.value : Number(a.value)
+      const bValue = typeof b.value === "number" ? b.value : Number(b.value)
+      const aNum = Number.isFinite(aValue) ? aValue : 0
+      const bNum = Number.isFinite(bValue) ? bValue : 0
+      return bNum - aNum
+    })
+
   return (
     <div
       className={cn(
@@ -179,16 +189,14 @@ function ChartTooltipContent({
     >
       {!nestLabel ? tooltipLabel : null}
       <div className="grid gap-1.5">
-        {payload
-          .filter((item) => item.type !== "none")
-          .map((item, index) => {
+        {sortedPayload.map((item, index) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
             const indicatorColor = color || item.payload.fill || item.color
 
             return (
               <div
-                key={item.dataKey}
+                key={`${item.dataKey ?? item.name ?? "item"}-${index}`}
                 className={cn(
                   "[&>svg]:text-muted-foreground flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5",
                   indicator === "dot" && "items-center"

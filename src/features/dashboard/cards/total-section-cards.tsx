@@ -24,7 +24,7 @@ type TotalsCardItem = {
 const totalsCardsMock: TotalsCardItem[] = [
   {
     title: "Total Fees Charged",
-    value: "$1,250.00",
+    value: "$328,450",
     deltaText: "+12.5%",
     deltaDirection: "up",
     footerTitle: "Trending up this month",
@@ -33,9 +33,9 @@ const totalsCardsMock: TotalsCardItem[] = [
   {
     title: "Fee Variance Detected",
     value: "$4,230",
-    deltaText: "-20%",
+    deltaText: "-8.2%",
     deltaDirection: "down",
-    footerTitle: "Down 20% this period",
+    footerTitle: "Trending down this month",
     footerSubtitle: "Total fee variance detected for the last months",
   },
   {

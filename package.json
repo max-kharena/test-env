@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://max-kharena.github.io/test-env/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

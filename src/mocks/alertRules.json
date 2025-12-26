@@ -1,5 +1,6 @@
 [
   {
+    "id": "rule-001",
     "Alert Name": "Fee Variance Alert",
     "Status": "Active",
     "Vendors": "All Vendors",
@@ -7,6 +8,7 @@
     "Channels": ["Email", "Slack", "In-App"]
   },
   {
+    "id": "rule-002",
     "Alert Name": "FX Markup Warning",
     "Status": "Active",
     "Vendors": ["Stripe", "Adyen"],
@@ -14,6 +16,7 @@
     "Channels": ["Email", "In-App"]
   },
   {
+    "id": "rule-003",
     "Alert Name": "SLA Breach Alert",
     "Status": "Active",
     "Vendors": "All Vendors",
@@ -21,6 +24,7 @@
     "Channels": ["Slack", "In-App"]
   },
   {
+    "id": "rule-004",
     "Alert Name": "Contract Expiry Reminder",
     "Status": "Disabled",
     "Vendors": "All Vendors",

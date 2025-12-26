@@ -27,6 +27,7 @@ import alertsData from "@/mocks/alerts.json"
 
 
 type AlertRuleRowBase = {
+	id?: string
 	"Alert Name": string
 	Status: "Active" | "Disabled" | string
 	Vendors: "All Vendors" | string[] | string
@@ -37,6 +38,7 @@ type AlertRuleRowBase = {
 type AlertRuleRow = AlertRuleRowBase & { id: string }
 
 type AlertHistoryRowBase = {
+	id?: string
 	"Alert Title": string
 	Description: string
 	Vendor: string
@@ -80,13 +82,16 @@ export default function AlertsTable() {
 
 	const rules = React.useMemo(() => {
 		const rows = alertRulesData as AlertRuleRowBase[]
-		return rows.map((row) => ({ ...row, id: row["Alert Name"] }))
+		return rows.map((row) => ({ ...row, id: row.id ?? row["Alert Name"] }))
 	}, [])
 
 	type RawAlertHistoryRow = AlertHistoryRowBase
 	const history = React.useMemo(() => {
 		const rows = alertsData as RawAlertHistoryRow[]
-		return rows.map((row) => ({ ...row, id: `${row["Alert Title"]}::${row.Triggered}` }))
+		return rows.map((row) => ({
+			...row,
+			id: row.id ?? `${row["Alert Title"]}::${row.Triggered}`,
+		}))
 	}, [])
 
 	const [ruleEnabled, setRuleEnabled] = React.useState<Record<string, boolean>>(() => {

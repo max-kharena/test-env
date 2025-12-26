@@ -4,12 +4,12 @@
     "vendor": "Stripe",
     "category": "Cards",
     "status": "Active",
-    "accounts": 2,
+    "accounts": 3,
     "volumeMtd": 2450000,
     "feeMtd": 71050,
     "feeLeakage": 1250,
     "slaBreaches": 0,
-    "alerts": 2,
+    "alerts": 1,
     "score": 94
   },
   {
@@ -22,7 +22,7 @@
     "feeMtd": 46250,
     "feeLeakage": 890,
     "slaBreaches": 1,
-    "alerts": 3,
+    "alerts": 1,
     "score": 87
   },
   {
@@ -30,12 +30,12 @@
     "vendor": "Checkout.com",
     "category": "Cards",
     "status": "Active",
-    "accounts": 3,
+    "accounts": 1,
     "volumeMtd": 890000,
     "feeMtd": 22250,
     "feeLeakage": 340,
     "slaBreaches": 0,
-    "alerts": null,
+    "alerts": 1,
     "score": 98
   },
   {
@@ -46,9 +46,9 @@
     "accounts": 1,
     "volumeMtd": 420000,
     "feeMtd": 4200,
-    "feeLeakage": null,
+    "feeLeakage": 0,
     "slaBreaches": 0,
-    "alerts": null,
+    "alerts": 0,
     "score": 92
   },
   {
@@ -56,12 +56,12 @@
     "vendor": "PayPal",
     "category": "On-ramp",
     "status": "Archived",
-    "accounts": 0,
+    "accounts": 1,
     "volumeMtd": 0,
     "feeMtd": 0,
-    "feeLeakage": null,
+    "feeLeakage": 0,
     "slaBreaches": 2,
-    "alerts": null,
+    "alerts": 0,
     "score": 65
   },
   {
@@ -74,7 +74,7 @@
     "feeMtd": 26000,
     "feeLeakage": 520,
     "slaBreaches": 0,
-    "alerts": 1,
+    "alerts": 0,
     "score": 96
   }
 ]

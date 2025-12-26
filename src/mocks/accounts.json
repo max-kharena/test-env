@@ -89,5 +89,18 @@
     "transactions": 0,
     "successRate": null,
     "status": "Inactive"
+  },
+  {
+    "id": "CIRCLE-001",
+    "accountName": "Circle Custody",
+    "accountId": "CIRCLE-001",
+    "vendor": "Circle",
+    "environment": "production",
+    "currency": "USD",
+    "balance": 253400.0,
+    "pendingAmount": 12450,
+    "transactions": 980,
+    "successRate": 99.9,
+    "status": "Active"
   }
 ]
