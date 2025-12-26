@@ -10,8 +10,10 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
+import { normalize } from "@/lib/string"
 import { cn } from "@/lib/utils"
 
 import {
@@ -35,6 +37,7 @@ import vendorsData from "@/mocks/vendors.json"
 import contractsData from "@/mocks/contracts.json"
 import accountsData from "@/mocks/accounts.json"
 import transactionsData from "@/mocks/transactions.json"
+import alertRulesData from "@/mocks/alertRules.json"
 import { DataTable } from "@/components/data-table"
 import { getSelectColumn } from "@/components/data-table-columns"
 
@@ -88,6 +91,29 @@ type TransactionRow = {
     feeUsd: number
     varianceUsd: number | null
     variancePercent: number | null
+}
+
+type AlertRuleRowBase = {
+    id?: string
+    "Alert Name": string
+    Status: "Active" | "Disabled" | string
+    Vendors: "All Vendors" | string[] | string
+    Condition: string
+    Channels: string[]
+}
+
+type AlertRuleRow = AlertRuleRowBase & { id: string }
+
+function alertRuleStatusBadgeClass(status: string) {
+    const value = normalize(status)
+    if (value === "active") return "border-transparent bg-chart-2/10 text-chart-2"
+    if (value === "disabled") return "border-transparent bg-chart-3/10 text-chart-3"
+    return "text-muted-foreground"
+}
+
+function vendorsToText(vendors: AlertRuleRow["Vendors"]) {
+    if (Array.isArray(vendors)) return vendors.join(", ")
+    return vendors
 }
 
 
@@ -329,8 +355,98 @@ const transactionColumns: ColumnDef<TransactionRow>[] = [
 
 function SummaryTable() {
     const [view, setView] = React.useState<
-        "vendors" | "contracts" | "accounts" | "transactions"
+        "vendors" | "contracts" | "accounts" | "transactions" | "alertRules"
     >("vendors")
+
+    const rules = React.useMemo(() => {
+        const rows = alertRulesData as AlertRuleRowBase[]
+        return rows.map((row) => ({ ...row, id: row.id ?? row["Alert Name"] }))
+    }, [])
+
+    const [ruleEnabled, setRuleEnabled] = React.useState<Record<string, boolean>>(() => {
+        const initial: Record<string, boolean> = {}
+        for (const rule of rules) {
+            initial[rule.id] = normalize(rule.Status) === "active"
+        }
+        return initial
+    })
+
+    const ruleColumns: ColumnDef<AlertRuleRow>[] = [
+        getSelectColumn<AlertRuleRow>(),
+        {
+            accessorKey: "Alert Name",
+            header: "Alert Name",
+            enableHiding: false,
+        },
+        {
+            accessorKey: "Status",
+            header: "Status",
+            cell: ({ row }) => {
+                const enabled = !!ruleEnabled[row.original.id]
+                const value = enabled ? "Active" : "Disabled"
+                return (
+                    <Badge
+                        variant="outline"
+                        className={cn("px-1.5", alertRuleStatusBadgeClass(value))}
+                    >
+                        {value}
+                    </Badge>
+                )
+            },
+        },
+        {
+            id: "vendors",
+            header: "Vendors",
+            cell: ({ row }) => (
+                <div className="max-w-[320px] truncate text-muted-foreground">
+                    {vendorsToText(row.original.Vendors)}
+                </div>
+            ),
+        },
+        {
+            accessorKey: "Condition",
+            header: "Condition",
+            cell: ({ row }) => (
+                <div className="max-w-[360px] truncate">{row.original.Condition}</div>
+            ),
+        },
+        {
+            id: "channels",
+            header: "Channels",
+            cell: ({ row }) => (
+                <div className="flex flex-wrap gap-1">
+                    {row.original.Channels.map((channel) => (
+                        <Badge
+                            key={channel}
+                            variant="outline"
+                            className="px-1.5 text-muted-foreground"
+                        >
+                            {channel}
+                        </Badge>
+                    ))}
+                </div>
+            ),
+        },
+        {
+            id: "enabled",
+            header: "Enabled",
+            cell: ({ row }) => {
+                const checked = !!ruleEnabled[row.original.id]
+
+                return (
+                    <div className="flex justify-end">
+                        <Switch
+                            checked={checked}
+                            onCheckedChange={(value) =>
+                                setRuleEnabled((prev) => ({ ...prev, [row.original.id]: value }))
+                            }
+                            aria-label={`Toggle ${row.original["Alert Name"]}`}
+                        />
+                    </div>
+                )
+            },
+        },
+    ]
 
     const actions = (
         <Tabs value={view} onValueChange={(value) => setView(value as typeof view)}>
@@ -348,6 +464,7 @@ function SummaryTable() {
                         <SelectValue placeholder="Select a view" />
                     </SelectTrigger>
                     <SelectContent>
+                            <SelectItem value="alertRules">Alert Rules</SelectItem>
                         <SelectItem value="vendors">Vendors</SelectItem>
                         <SelectItem value="contracts">Contracts</SelectItem>
                         <SelectItem value="accounts">Accounts</SelectItem>
@@ -356,6 +473,7 @@ function SummaryTable() {
                 </Select>
 
                 <TabsList className="hidden @4xl/main:flex">
+                        <TabsTrigger value="alertRules">Alert Rules</TabsTrigger>
                     <TabsTrigger value="vendors">Vendors</TabsTrigger>
                     <TabsTrigger value="contracts">Contracts</TabsTrigger>
                     <TabsTrigger value="accounts">Accounts</TabsTrigger>
@@ -393,6 +511,17 @@ function SummaryTable() {
                 actions={actions}
                 data={transactionsData as TransactionRow[]}
                 columns={transactionColumns}
+                getRowId={(row) => row.id}
+            />
+        )
+    }
+
+    if (view === "alertRules") {
+        return (
+            <DataTable<AlertRuleRow>
+                actions={actions}
+                data={rules}
+                columns={ruleColumns}
                 getRowId={(row) => row.id}
             />
         )
